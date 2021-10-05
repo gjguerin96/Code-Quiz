@@ -33,10 +33,9 @@ var questionList = [
 //console.log(questions)
 var display = 0
 
-
 startButton.addEventListener("click", function(event) {
     startTimer()
-    playGame()
+    nextQuestion()
     startButton.classList.add("hide")
 })
 
@@ -52,25 +51,26 @@ function startTimer() {
     },1000)
 }
 
-//function setNextQuestion() {}
-
-function playGame() { 
+function nextQuestion() { 
+    questions.innerHTML = ""
     questions.style.display = "block"
     var currentQuestion = questionList[display].question
+    //create a new h2
+    //update the text to the question
+    // append the question to "questions" element 
     questions.children[0].textContent = currentQuestion
     var currentAnswers = questionList[display].answers
     currentAnswers.forEach(makeButtons)
     //console.log (currentAnswers[0].text)
-    function makeButtons () {
+    function makeButtons (something) {
+        console.log(something)
         answerBtn = document.createElement("button")
-        answerBtn.innerText = currentAnswers[0]
+        answerBtn.innerText = something.text
         document.body.appendChild(answerBtn)
         answerBtn.addEventListener("click", function() {
-        display++
-        answerBtn.classList.add("hide")
-        playGame()
-    })
-    }
-    
-    
+            display++
+            answerBtn.classList.add("hide")
+            nextQuestion()
+        })
+    }  
 }
