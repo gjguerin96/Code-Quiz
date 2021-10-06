@@ -1,7 +1,6 @@
 var startButton = document.querySelector("#start-button")
 var timerEl = document.querySelector("#timer-text")
 var questions = document.querySelector(".questions")
-var question = document.querySelector("#question")
 var wrongAnswer = document.querySelector(".wrong-answer")
 var rightAnswer = document.querySelector(".right-answer")
 //var answerButton = document.querySelector(".anwer-btn")
@@ -27,10 +26,17 @@ var questionList = [
         {text: "wrong2", correct: false}, 
         {text: "wrong3", correct: false}, 
         {text: "right", correct: true}]
+    },
+    {
+        question: "a fourth question?", 
+        answers: [{text: "wrong1", correct: false}, 
+        {text: "wrong2", correct: false}, 
+        {text: "wrong3", correct: false}, 
+        {text: "right", correct: true}]
     }
 ]
 
-//console.log(questions)
+var correctTally = 0
 var display = 0
 
 startButton.addEventListener("click", function(event) {
@@ -38,15 +44,15 @@ startButton.addEventListener("click", function(event) {
     nextQuestion()
     startButton.classList.add("hide")
 })
-
+var timeLeft = 60
 function startTimer() {  
-    var timeLeft = 10
+    
     timer = setInterval(function() {
         timeLeft--
         timerEl.textContent = timeLeft + " seconds left"
         if (timeLeft===0) {
             clearInterval(timer)
-            timerEl.textContent = "Times up!"
+            gameOver()
         }
     },1000)
 }
@@ -56,20 +62,28 @@ function nextQuestion() {
     questions.style.display = "block"
     var currentQuestion = questionList[display].question
     //create a new h2
+    var h2El = document.createElement("h2")
     //update the text to the question
-    // append the question to "questions" element 
+    h2El.textContent = currentQuestion
+    // append the question to "questions" element
+    questions.appendChild(h2El)
     questions.children[0].textContent = currentQuestion
     var currentAnswers = questionList[display].answers
     currentAnswers.forEach(makeButtons)
-    //console.log (currentAnswers[0].text)
-    function makeButtons (something) {
-        console.log(something)
+    function makeButtons (event) {
         answerBtn = document.createElement("button")
-        answerBtn.innerText = something.text
-        document.body.appendChild(answerBtn)
+        answerBtn.innerText = event.text
+        //document.body.appendChild(answerBtn)
+        h2El.appendChild(answerBtn)
         answerBtn.addEventListener("click", function() {
+            if (event.correct === true) {
+                correctTally++
+                console.log(correctTally)
+            }
+            else {
+                timeLeft = timeLeft - 10
+            } 
             display++
-            answerBtn.classList.add("hide")
             nextQuestion()
         })
     }  

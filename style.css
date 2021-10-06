@@ -1,3 +1,15 @@
 .hide {
    display: none; 
 }
+
+body {
+   background-color: rgb(94, 94, 94);
+}
+
+h1 {
+   color: white;
+}
+
+#timer-text {
+   color: white;
+}
