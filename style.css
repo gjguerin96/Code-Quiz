@@ -4,12 +4,47 @@
 
 body {
    background-color: rgb(94, 94, 94);
+   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
-h1 {
+header {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   margin: 40px;
+}
+
+h1,
+#subtitle {
    color: white;
 }
 
 #timer-text {
    color: white;
+   font-size: 1.3rem;
+}
+
+.questions {
+   display: flex;
+   flex-direction: column;
+   align-items: space-around;
+}
+
+h2{
+   color: white;
+   font-size: 1.8rem;
+   margin: 10px 30px;
+}
+
+button {
+   background-color: deepskyblue;
+   color: white;
+   font-size: 1.3rem;
+   margin: 10px;
+}
+
+#timer-text {
+   position: relative;
+   top: 2px;
+   left: 1px;
 }
