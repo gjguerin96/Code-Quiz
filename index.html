@@ -8,22 +8,32 @@
 </head>
   
 <body>
+    <!--the timer is displayed at the top of the page-->
     <p class="timer-text">Time remaining: <span id="timer-text">60</span></p>
     <header>
+        <!--header content is hidden when the start button is clicked-->
         <h1>Code Quiz Challenge</h1>
         <p id="subtitle">Test your coding knowledge with this quiz!</p>
         <button id="start-button">Start</button>
     </header>
     
     <main>
+        <!--questions and answers are displayed here-->
         <div id="questions" class="hide">
             <h2></h2>
         </div>
+        <!--displays text saying correct or incorrect after the user answers each question-->
         <p id="check"></p>
+        <!--this is shown once the game is over-->
         <div id="game-over" class="hide">
-            <p>Your final score is:<span id="final-score"></span> </p>
+            <p>Your final score is: <span id="final-score"></span> </p>
             <p>Please enter your initials: <input type="text"  id="initials" placeholder="AAA"/></p>
             <button  id="submit">Submit</button>
+        </div>
+        <div id="scores" class="hide">
+            <p>Scores:</p>
+            <li id="score-list"></li>
+            <!-- <button  id="restart">Play Again</button> -->
         </div>
     </main>
     

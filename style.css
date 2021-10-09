@@ -1,3 +1,4 @@
+/* elements are added to this class to make them disappear */
 .hide {
    display: none; 
 }
@@ -5,6 +6,13 @@
 body {
    background-color: rgb(94, 94, 94);
    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.timer-text {
+   color: white;
+   font-size: 1.3rem;
+   top: 2px;
+   text-align: right;
 }
 
 header {
@@ -19,6 +27,15 @@ h1,
    color: white;
 }
 
+/*styling for all buttons*/
+button {
+   background-color: deepskyblue;
+   color: white;
+   font-size: 1.3rem;
+   margin: 10px;
+}
+
+/*styling for the questions and answers*/
 #questions {
    display: flex;
    flex-direction: column;
@@ -28,31 +45,17 @@ h1,
 
 h2{
    color: white;
-   font-size: 1.8rem;
+   font-size: 1.6rem;
    margin: 10px 30px;
 }
 
-button {
-   background-color: deepskyblue;
-   color: white;
-   font-size: 1.3rem;
-   margin: 10px;
-}
-
-.timer-text {
-   color: white;
-   font-size: 1.3rem;
-   top: 2px;
-   text-align: right;
-}
-
-#check,
-#game-over {
+#check {
    color: white;
    text-align: center;
 }
 
-#game-over {
+#game-over,
+#scores {
    color: white;
    text-align: center;
    font-size: 1.5rem;
