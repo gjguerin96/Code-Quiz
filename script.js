@@ -10,7 +10,6 @@ var finalScore = document.querySelector("#final-score")
 var submit = document.querySelector("#submit")
 var scores = document.querySelector("#scores")
 var scoreList = document.querySelector("#score-list")
-//var restart = document.querySelector("#restart")
 
 //database of questions and answers
 var questionList = [
@@ -68,8 +67,6 @@ function startTimer() {
         timeLeft--
         timerEl.textContent = timeLeft 
         if (timeLeft<=0) {
-            timeLeft = 0
-            timerEl.textContent = timeLeft
             gameOver()
         }
     },1000)
@@ -119,6 +116,11 @@ function getQuestions(){
 
 //hides questions and answers and displays endgame info
 function gameOver () {
+    //resets timeLeft score to 0 if it was negative
+    if (timeLeft < 0) {
+        timeLeft = 0
+        timerEl.textContent = timeLeft
+    }
     questions.style.display = "none"
     check.style.display = "none"
     gameOverEl.removeAttribute('class')
@@ -133,24 +135,12 @@ submit.addEventListener('click', function (event) {
     if (initials === "") {
         return;
     }
-    //var initialsScore = initials + " " + timeLeft
     var playerData = {
         playerName: initials, 
         timeLeft: timeLeft
     }
     localStorage.setItem("playerData", JSON.stringify(playerData))
     var fetch = JSON.parse(localStorage.getItem("playerData"))
-    scoreList.append(fetch.playerName, ", ", fetch.timeLeft)
-    // restart.addEventListener('click', function (event) {
-    //     scores.style.display = "none"
-    //     startButton.classList.remove("hide")
-    //     h1El.classList.remove("hide")
-    //     subtitle.classList.remove("hide")
-    //     timeLeft = 60
-    //     display = 0
-    //     timerEl.textContent = timeLeft
-    //     startTimer()
-    //     getQuestions()
-    // })
+    scoreList.append(fetch.playerName, " - ", fetch.timeLeft)
 })
 
