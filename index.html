@@ -8,6 +8,7 @@
 </head>
   
 <body>
+    <p class="timer-text">Time remaining: <span id="timer-text">60</span></p>
     <header>
         <h1>Code Quiz Challenge</h1>
         <p id="subtitle">Test your coding knowledge with this quiz!</p>
@@ -15,18 +16,16 @@
     </header>
     
     <main>
-        <p id="timer-text"></p>
-
-        <!-- <div class="question-syling"> -->
-            <div class="questions hide">
-                <h2></h2>
-                <p id="check"></p>
-            </div>
-        <!-- </div> -->
-        <p id="game-over"> </p>
-        <input type="text" class = "hide" id="initials" placeholder="AAA"/>
+        <div id="questions" class="hide">
+            <h2></h2>
+        </div>
+        <p id="check"></p>
+        <div id="game-over" class="hide">
+            <p>Your final score is:<span id="final-score"></span> </p>
+            <p>Please enter your initials: <input type="text"  id="initials" placeholder="AAA"/></p>
+            <button  id="submit">Submit</button>
+        </div>
     </main>
-    
     
     <script src="./script.js"></script>
 </body>
